@@ -31,7 +31,12 @@ export const Projects = () => {
             <p>
               Lorem Ipsum Description dummy text for printing and demoing
               <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                <Nav variant="pills" defaultActiveKey="/home">
+                <Nav
+                  variant="pills"
+                  defaultActiveKey="/home"
+                  className="nav-pills mb-5 justify-content-center align-items-center"
+                  id="pills-tab"
+                >
                   <Nav.Item>
                     <Nav.Link eventKey="first">Tab1</Nav.Link>
                   </Nav.Item>
@@ -58,7 +63,7 @@ export const Projects = () => {
           </Col>
         </Row>
       </Container>
-      <img src={colorSharp2} className="background-image-right" />
+      <img src={colorSharp2} className="background-image-right"></img>
     </section>
   );
 };
