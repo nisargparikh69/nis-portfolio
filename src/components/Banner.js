@@ -62,7 +62,14 @@ export const Banner = () => {
                     <span className="wrap">{text}</span>
                   </h1>
                   <p>I love machines... I can talk to them !</p>
-                  <button onClick={() => console.log("connect")}>
+                  <button
+                    onClick={() => {
+                      window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: "smooth",
+                      });
+                    }}
+                  >
                     Let's connect <ArrowRightCircle size={25} />
                   </button>
                 </div>
