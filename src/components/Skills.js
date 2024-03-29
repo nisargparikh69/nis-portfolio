@@ -29,10 +29,7 @@ export const Skills = () => {
           <Col>
             <div className="skill-bx">
               <h2>Skills</h2>
-              <p>
-                Lorem Imsum is really dummy. Sample Text shown just for
-                showcasing purpose. Change later
-              </p>
+              <p>Listed below are all the technologies I have worked with..</p>
               <Carousel
                 responsive={responsive}
                 infinite={true}
