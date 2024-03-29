@@ -83,11 +83,7 @@ export const Contact = () => {
       <Container>
         <div>
           {showAlert && (
-            <Alert
-              variant="danger"
-              onClose={() => setShowAlert(false)}
-              dismissible
-            >
+            <Alert variant="danger">
               Please fix the following errors:
               <ul>
                 {nameError && <li>{nameError}</li>}
