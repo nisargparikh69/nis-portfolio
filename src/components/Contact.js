@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
@@ -15,6 +15,9 @@ export const Contact = () => {
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState("Send");
   const [status, setStatus] = useState({});
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const onFormUpdate = (category, value) => {
     setFormDetails({
@@ -25,6 +28,7 @@ export const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
     setButtonText("Sending...");
     let response = await fetch("http://localhost:5000/contact", {
       method: "POST",
@@ -46,9 +50,52 @@ export const Contact = () => {
     }
   };
 
+  const validateForm = () => {
+    let isValid = true;
+    if (!formDetails.firstName.trim()) {
+      isValid = false;
+      setNameError("First Name is required");
+    } else {
+      setNameError("");
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formDetails.email.trim()) {
+      setEmailError("Email is required");
+      isValid = false;
+    } else if (!emailRegex.test(formDetails.email)) {
+      isValid = false;
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+    return isValid;
+  };
+  useEffect(() => {
+    if (nameError || emailError) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
+    }
+  }, [nameError, emailError]);
+
   return (
     <section className="contact" id="connect">
       <Container>
+        <div>
+          {showAlert && (
+            <Alert
+              variant="danger"
+              onClose={() => setShowAlert(false)}
+              dismissible
+            >
+              Please fix the following errors:
+              <ul>
+                {nameError && <li>{nameError}</li>}
+                {emailError && <li>{emailError}</li>}
+              </ul>
+            </Alert>
+          )}
+        </div>
         <Row className="align-items-center">
           <Col size={12} md={6}>
             <TrackVisibility>
