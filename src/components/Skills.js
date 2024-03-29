@@ -33,6 +33,10 @@ export const Skills = () => {
               <Carousel
                 responsive={responsive}
                 infinite={true}
+                autoPlay={true}
+                autoPlaySpeed={3000}
+                transitionDuration={1000}
+                customTransition="transform 1000ms ease-in-out"
                 className="skill-slider"
               >
                 <div className="item">
