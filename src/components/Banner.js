@@ -9,7 +9,7 @@ export const Banner = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const toBeRotated = [
     "Web Developer",
-    "Back-End Developer",
+    "Backend Developer",
     "Full Stack Developer",
   ];
   const [text, setText] = useState("");

@@ -29,7 +29,10 @@ export const Skills = () => {
           <Col>
             <div className="skill-bx">
               <h2>Skills</h2>
-              <p>Listed below are all the technologies I have worked with..</p>
+              <p>
+                Listed below are all the technologies I have worked with along
+                with proficiency.
+              </p>
               <Carousel
                 responsive={responsive}
                 infinite={true}
